@@ -17,3 +17,11 @@ CREATE TABLE users (
     name varchar(255) not null,
     password varchar(255) not null
 );
+
+CREATE TABLE avis (
+  avis_id INT AUTO_INCREMENT PRIMARY KEY,
+  texte VARCHAR(255) NOT NULL,
+  note INT NOT NULL,
+  nom VARCHAR(255) NOT NULL DEFAULT 'Anonyme',
+  prenom VARCHAR(255) NOT NULL DEFAULT 'Anonyme'
+);

@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './Service/auth.service';
 import { inject } from '@angular/core';
 import { AccueilComponent } from './accueil/accueil.component';
+import { AvisComponent } from './avis/avis.component';
 
 export const utilisateurEstConnecte = () => {
   const authService = inject(AuthService);
@@ -19,6 +20,9 @@ export const utilisateurEstConnecte = () => {
 };
 
 export const routes: Routes = [
+    { path: 'avis', 
+      component: AvisComponent,
+    },
     {
       path: 'login',
       component: LoginComponent,

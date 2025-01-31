@@ -1,5 +1,46 @@
-mat-toolbar {
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;700&display=swap');
+
+mat-toolbar.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fdfdfd;
+  padding: 0 20px;
+  height: 70px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-logo .logo {
+  height: 50px;
+  width: 50px;
+}
+
+.header-logo .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #73b7eb;
+  font-family: "Pacifico", cursive;
+}
+
+.header-logo .title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button[mat-flat-button] {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
 }

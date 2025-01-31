@@ -1,0 +1,19 @@
+.stars-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stars {
+  display: flex;
+  gap: 5px;
+}
+
+mat-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+mat-icon.selected {
+  color: gold;
+}

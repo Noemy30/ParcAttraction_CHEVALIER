@@ -1,7 +1,10 @@
-<mat-toolbar>
-  <span><a routerLink="/accueil">Parc d'attraction</a></span>
-  <div *ngIf="authService.isLoggedIn">
-    <button mat-stroked-button (click)="logout()">Déconnexion</button>
+<mat-toolbar class="header">
+  <div class="header-logo">
+    <img src="assets/icon_logo.png" alt="Logo" class="logo" />
+    <span class="title"><a routerLink="/accueil">Euphoria Park</a></span>
+  </div>
+  <div class="header-actions" *ngIf="authService.isLoggedIn">
+    <button mat-flat-button color="primary" (click)="logout()">Déconnexion</button>
   </div>
 </mat-toolbar>
 

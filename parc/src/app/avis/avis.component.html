@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Liste des avis</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let avis of avisList | async">
+      <p><strong>{{ avis.nom }} {{ avis.prenom }}</strong> - Note : {{ avis.note }}/5</p>
+      <p>{{ avis.texte }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Ajouter un avis</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="avisForm" (ngSubmit)="submitAvis()">
+      <mat-form-field class="full-width">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Prénom</mat-label>
+        <input matInput formControlName="prenom">
+      </mat-form-field>
+
+      <div class="stars-container">
+        <label>Note :</label>
+        <div class="stars">
+          <mat-icon 
+            *ngFor="let star of stars; let i = index" 
+            (click)="setRating(i + 1)"
+            [class.selected]="i < avisForm.get('note')?.value">
+            star
+          </mat-icon>
+        </div>
+      </div>
+      
+
+      <mat-form-field class="full-width">
+        <mat-label>Texte</mat-label>
+        <textarea matInput formControlName="texte"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Envoyer</button>
+    </form>
+  </mat-card-content>
+</mat-card>

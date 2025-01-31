@@ -4,13 +4,18 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { AttractionInterface } from '../Interface/attraction.interface';
 import { MatCardModule } from '@angular/material/card';
+import { AvisComponent } from '../avis/avis.component';
 
 @Component({
   selector: 'app-accueil',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
   templateUrl: './accueil.component.html',
-  styleUrl: './accueil.component.scss'
+  styleUrls: ['./accueil.component.scss'],
+  imports: [
+    AvisComponent,
+    CommonModule,
+    MatCardModule
+  ]
 })
 export class AccueilComponent {
 
