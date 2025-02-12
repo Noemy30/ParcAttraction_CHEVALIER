@@ -10,8 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { HttpClient, HttpClientModule } from '@angular/common/http'; // ✅ Ajout de HttpClient
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-avis',
   standalone: true,
@@ -27,7 +26,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'; // ✅ Ajou
     MatIconModule,
     MatDialogModule,
     MatCheckboxModule,
-    HttpClientModule // ✅ Nécessaire uniquement si c'est un composant standalone
+    HttpClientModule 
   ],
 })
 export class AvisComponent {
@@ -36,7 +35,7 @@ export class AvisComponent {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient, // ✅ Injection correcte de HttpClient
+    private http: HttpClient, 
     private dialogRef: MatDialogRef<AvisComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { attractionName: string }
   ) {
@@ -76,7 +75,7 @@ export class AvisComponent {
         attraction_name: this.data.attractionName
       };
   
-      console.log('Données envoyées à l’API :', avisData); // ✅ Vérification des données
+      console.log('Données envoyées à l’API :', avisData); 
   
       this.http.post('http://localhost:5000/avis', avisData).subscribe({
         next: () => {

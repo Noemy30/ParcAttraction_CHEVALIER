@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Avis de l'attraction</h2>
+
+<mat-dialog-content>
+  <div *ngIf="avisList$ | async as avisList; else noAvis" class="avis-container">
+    <div *ngFor="let avis of avisList" class="avis-item">
+      <h4>{{ avis.nom && avis.prenom ? avis.nom + ' ' + avis.prenom : 'Anonyme' }}</h4>
+      <p>Note : <strong>{{ avis.note }} / 5</strong></p>
+      <p>{{ avis.texte }}</p>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <ng-template #noAvis>
+    <p style="text-align: center; font-weight: bold;">Aucun avis trouvé.</p>
+  </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeModal()">Fermer</button>
+</mat-dialog-actions>

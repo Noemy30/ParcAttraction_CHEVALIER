@@ -18,3 +18,14 @@ CREATE TABLE users (
     password varchar(255) not null
 );
 
+
+CREATE TABLE avis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    attraction_id INT NOT NULL,
+    nom VARCHAR(100) NULL,
+    prenom VARCHAR(100) NULL,
+    note TINYINT NOT NULL CHECK (note BETWEEN 1 AND 5),
+    texte TEXT NOT NULL,
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (attraction_id) REFERENCES attraction(attraction_id) ON DELETE CASCADE
+);

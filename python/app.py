@@ -4,7 +4,7 @@ from flask_cors import CORS # type: ignore
 import request.request as req
 import controller.auth.auth as user
 import controller.attraction as attraction
-import controller.avis as avis  # Import du module avis
+import controller.avis as avis  
 
 
 app = Flask(__name__)
@@ -71,24 +71,33 @@ def login():
     return result, 200
 
 
-import controller.avis as avis  # Import du module avis
+
 
 @app.post('/avis')
 def addAvis():
     """Ajoute un avis dans la base de données"""
     json = request.get_json()
 
-    # Vérifier si les champs obligatoires sont présents
     required_fields = ["nom", "prenom", "note", "texte", "attraction_name"]
     if not all(field in json for field in required_fields):
         return jsonify({"message": "Tous les champs sont requis"}), 400
 
-    # Insérer l'avis dans la base de données
     result = avis.add_avis(json)
     
-    if isinstance(result, dict):  # Cas où l'attraction n'est pas trouvée
+    if isinstance(result, dict): 
         return jsonify(result), 400
 
     if result:
         return jsonify({"message": "Avis ajouté avec succès."}), 200
     return jsonify({"message": "Erreur lors de l'ajout de l'avis."}), 500
+
+@app.get('/avis/<int:id>')
+def getAvis(id):
+    """Récupère tous les avis d'une attraction spécifique"""
+    result = avis.get_avis_by_attraction(id)
+    
+    if result:
+        return jsonify(result), 200
+    return jsonify({"message": "Aucun avis trouvé pour cette attraction."}), 404
+
+

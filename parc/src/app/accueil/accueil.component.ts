@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { AttractionService } from '../Service/attraction.service';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'; 
 import { AttractionInterface } from '../Interface/attraction.interface';
 import { MatCardModule } from '@angular/material/card';
 import { AvisComponent } from '../avis/avis.component';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http'; 
+import { VoirAvisComponent } from '../voir-avis/voir-avis.component';
 
 @Component({
   selector: 'app-accueil',
@@ -15,14 +17,18 @@ import { MatDialog } from '@angular/material/dialog';
   imports: [
     CommonModule,
     MatCardModule
-]
+  ]
 })
 export class AccueilComponent {
 
-  constructor(public attractionService: AttractionService, private dialog: MatDialog) {}
+  public attractions: Observable<AttractionInterface[]> = this.attractionService.getAllAttraction();
+  attractions$: Observable<any[]> = new Observable();
 
-  
-  public attractions: Observable<AttractionInterface[]> = this.attractionService.getAllAttraction()
+  constructor(
+    public attractionService: AttractionService,
+    private dialog: MatDialog,
+    private http: HttpClient 
+  ) {}
 
   openModal(attractionName: string) {
     const dialogRef = this.dialog.open(AvisComponent, {
@@ -33,8 +39,22 @@ export class AccueilComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(`Avis pour ${attractionName} :`, result);
-        // Logique pour enregistrer l'avis si nécessaire
       }
     });
   }
+
+
+  openAvisModal(attractionName: number | null) {
+    console.log(`Ouverture de la modale pour : ${attractionName}`);
+  
+    const dialogRef = this.dialog.open(VoirAvisComponent, {
+      width: '500px',
+      data: { id: attractionName },
+    });
+  
+    dialogRef.afterClosed().subscribe(() => {
+      console.log(`Modale fermée pour ${attractionName}`);
+    });
+  }
+  
 }

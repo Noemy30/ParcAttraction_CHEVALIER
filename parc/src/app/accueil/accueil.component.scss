@@ -18,8 +18,8 @@
   align-items: center;
   text-align: center;
   padding: 20px;
-  width: 100%; /* Permet de s'ajuster à la largeur de son conteneur */
-  max-width: 300px; /* Largeur maximale pour ne pas dépasser cette taille */
+  width: 100%; 
+  max-width: 300px; 
 }
 
 .attraction-title {
@@ -63,4 +63,9 @@ button {
   padding: 10px 20px;
   font-family: 'Arima';
   font-size: 16px;
+}
+
+
+.modal:hover {
+  background-color: #6699ff;
 }
