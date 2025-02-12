@@ -1,24 +1,60 @@
-.attraction-title {
-  font-size: 18px;
-  font-weight: 500;
-  background-color: darkgrey;
-  width: fit-content;
-  margin-top: 25px;
-}
-.attraction {
-  display: flex;
-  align-items: center;
-  column-gap: 25px;
-  width: fit-content;
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Love+Ya+Like+A+Sister&family=Lusitana:wght@400;700&family=Lustria&family=Milonga&family=Pacifico&family=Playwrite+VN+Guides&display=swap');
 
-  border-bottom: solid 1px grey;
-  span {
-    padding: 5px;
-    width: 250px;
-  }
-  .champ {
-    padding: 5px;
-    margin-top: 21.5px;
-    width: 250px;
-  }
+table {
+  width: 80%;
+  margin: 0 auto; 
+  border-collapse: collapse;
+  font-family: 'Arima';
+  margin-top: 110px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+mat-slide-toggle {
+  margin-top: 10px;
+}
+
+.enregistrer {
+  background-color: #1976d2;
+  color: white;
+  margin-right: 12px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-transform: none;
+}
+
+.enregistrer:hover {
+  background-color: #1565c0; 
+}
+
+.ajouter {
+  background-color: #4caf50; 
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-transform: none;
+}
+
+.ajouter:hover {
+  background-color: #388e3c; 
+}
+
+.champ {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 5px 10px;
 }

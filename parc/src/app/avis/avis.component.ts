@@ -1,65 +1,96 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { AvisInterface } from '../Interface/avis.intercafe';
-import { AvisService } from '../Service/avis.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HttpClient, HttpClientModule } from '@angular/common/http'; // ✅ Ajout de HttpClient
 
 @Component({
   selector: 'app-avis',
-  standalone: true, 
+  standalone: true,
   templateUrl: './avis.component.html',
   styleUrls: ['./avis.component.scss'],
   imports: [
     CommonModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatInputModule,
-    MatIconModule
-  ] 
+    MatIconModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    HttpClientModule // ✅ Nécessaire uniquement si c'est un composant standalone
+  ],
 })
-export class AvisComponent implements OnInit {
-  public avisForm: FormGroup;
-  public avisList: Observable<AvisInterface[]>;
+export class AvisComponent {
+  avisForm: FormGroup;
+  stars = [1, 2, 3, 4, 5];
 
-  public stars = [1, 2, 3, 4, 5];
-
-  constructor(private avisService: AvisService, private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient, // ✅ Injection correcte de HttpClient
+    private dialogRef: MatDialogRef<AvisComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { attractionName: string }
+  ) {
     this.avisForm = this.fb.group({
+      anonyme: [false],
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      note: [0, Validators.required],
       texte: ['', Validators.required],
-      note: [0, [Validators.required, Validators.min(1), Validators.max(5)]],
-      nom: ['Anonyme'],
-      prenom: ['Anonyme'],
-    });
-
-    this.avisList = this.avisService.getAvis();
-  }
-
-  ngOnInit(): void {}
-
- public submitAvis(): void {
-  if (this.avisForm.valid) {
-    this.avisService.addAvis(this.avisForm.value).subscribe(() => {
-      this.avisList = this.avisService.getAvis(); // Recharge la liste des avis
-      this.avisForm.reset({ nom: 'Anonyme', prenom: 'Anonyme', note: 0, texte: '' }); // Réinitialise le formulaire
-    }, (error) => {
-      console.error('Erreur lors de l\'ajout de l\'avis :', error);
     });
   }
-}
 
+  toggleAnonyme() {
+    const isAnonyme = this.avisForm.get('anonyme')?.value;
+  
+    if (isAnonyme) {
+      this.avisForm.patchValue({ nom: '', prenom: '' });
+      this.avisForm.get('nom')?.clearValidators();
+      this.avisForm.get('prenom')?.clearValidators();
+    } else {
+      this.avisForm.get('nom')?.setValidators(Validators.required);
+      this.avisForm.get('prenom')?.setValidators(Validators.required);
+    }
 
-  // Méthode pour définir la note
-  public setRating(rating: number): void {
-    this.avisForm.get('note')?.setValue(rating);
+    this.avisForm.get('nom')?.updateValueAndValidity();
+    this.avisForm.get('prenom')?.updateValueAndValidity();
+  }
+
+  setRating(rating: number) {
+    this.avisForm.patchValue({ note: rating });
+  }
+
+  submitAvis() {
+    if (this.avisForm.valid) {
+      const avisData = {
+        ...this.avisForm.value,
+        attraction_name: this.data.attractionName
+      };
+  
+      console.log('Données envoyées à l’API :', avisData); // ✅ Vérification des données
+  
+      this.http.post('http://localhost:5000/avis', avisData).subscribe({
+        next: () => {
+          console.log('Avis envoyé avec succès');
+          this.dialogRef.close(avisData);
+        },
+        error: (err) => console.error('Erreur lors de l\'envoi de l\'avis :', err)
+      });
+    } else {
+      console.log('Le formulaire est invalide.');
+    }
+  }
+  
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

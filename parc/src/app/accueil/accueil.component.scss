@@ -1,44 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Love+Ya+Like+A+Sister&family=Lusitana:wght@400;700&family=Lustria&family=Milonga&family=Pacifico&family=Playwrite+VN+Guides&display=swap');
+
 .attractions-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  font-family: 'Arima';
 }
 
 .attraction {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.attraction:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.attraction span {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
-.attraction span:nth-child(1) {
-  font-size: 18px;
-  font-weight: bold;
-  color: #007bff; 
-}
-
-.attraction span:nth-child(3) {
-  font-weight: bold;
-  color: #555; 
-}
-
-mat-card {
-  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Permet de s'ajuster à la largeur de son conteneur */
+  max-width: 300px; /* Largeur maximale pour ne pas dépasser cette taille */
+}
+
+.attraction-title {
+  background-color: #6699ff;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 85px;
+  border-radius: 5px;
+}
+
+.attraction-content {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.attraction-content img {
+  width: 80%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+button {
+  margin-top: 10px;
+  background-color: rgb(15, 15, 119);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: 'Arima';
+  font-size: 16px;
 }

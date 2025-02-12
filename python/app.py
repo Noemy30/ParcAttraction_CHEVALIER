@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS # type: ignore
 
 import request.request as req
 import controller.auth.auth as user
 import controller.attraction as attraction
+import controller.avis as avis  # Import du module avis
+
 
 app = Flask(__name__)
 CORS(app)
@@ -68,3 +70,25 @@ def login():
     result = jsonify({"token": user.encode_auth_token(list(records[0])[0]), "name": json['name']})
     return result, 200
 
+
+import controller.avis as avis  # Import du module avis
+
+@app.post('/avis')
+def addAvis():
+    """Ajoute un avis dans la base de données"""
+    json = request.get_json()
+
+    # Vérifier si les champs obligatoires sont présents
+    required_fields = ["nom", "prenom", "note", "texte", "attraction_name"]
+    if not all(field in json for field in required_fields):
+        return jsonify({"message": "Tous les champs sont requis"}), 400
+
+    # Insérer l'avis dans la base de données
+    result = avis.add_avis(json)
+    
+    if isinstance(result, dict):  # Cas où l'attraction n'est pas trouvée
+        return jsonify(result), 400
+
+    if result:
+        return jsonify({"message": "Avis ajouté avec succès."}), 200
+    return jsonify({"message": "Erreur lors de l'ajout de l'avis."}), 500

@@ -41,8 +41,11 @@ def get_attraction(id):
         return []
 
 def delete_attraction(id):
-    if (not id):
+    if not id:
         return False
+
+    # Supprimer les avis associés avant de supprimer l'attraction
+    req.delete_from_db("DELETE FROM avis WHERE attraction_id = ?", (id,))
 
     req.delete_from_db("DELETE FROM attraction WHERE attraction_id = ?", (id,))
 

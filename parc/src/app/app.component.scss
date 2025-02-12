@@ -4,7 +4,7 @@ mat-toolbar.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fdfdfd;
+  background-color: #f3f3f3;
   padding: 0 20px;
   height: 70px;
 }
@@ -43,4 +43,24 @@ button[mat-flat-button] {
   font-size: 1rem;
   font-weight: 500;
   color: white;
+  font-size: 16px;
+}
+
+.admin  {
+  color: #73b7eb;
+  text-decoration: none;
+  font-size: 17px;
+  margin-right: 20px;
+}
+
+.traduction {
+  padding: 10px 15px;
+  background-color: #73b7eb;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.traduction:hover {
+  background-color: #4086bb;
 }

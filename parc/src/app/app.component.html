@@ -3,8 +3,33 @@
     <img src="assets/icon_logo.png" alt="Logo" class="logo" />
     <span class="title"><a routerLink="/accueil">Euphoria Park</a></span>
   </div>
-  <div class="header-actions" *ngIf="authService.isLoggedIn">
-    <button mat-flat-button color="primary" (click)="logout()">Déconnexion</button>
+  <div class="header-actions">
+    <button
+      mat-flat-button
+      color="primary"
+      *ngIf="!authService.isLoggedIn"
+      routerLink="/login"
+    >
+      Se connecter
+    </button>
+
+    <a class="admin" *ngIf="authService.isLoggedIn" routerLink="/admin">
+      Attractions
+    </a>
+    
+
+    <button class="traduction">Français</button>
+    <button class="traduction">Anglais</button>
+
+    <button
+      mat-flat-button
+      color="primary"
+      *ngIf="authService.isLoggedIn"
+      (click)="logout()"
+    >
+      Déconnexion
+    </button>
+
   </div>
 </mat-toolbar>
 

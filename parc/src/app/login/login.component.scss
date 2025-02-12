@@ -1,8 +1,40 @@
+.login-card {
+  max-width: 600px;
+  margin: 120px auto; /* Centrage de la carte */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombre douce */
+  background-color: #fafafa;
+}
+
+.mat-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  gap: 10px; /* Espacement entre l'icône et le texte */
+}
+
 .formulaire {
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  margin-top: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 15px; /* Espacement entre les champs */
+  margin-top: 30px;
+}
+
+.form-field {
+  width: 100%; /* Les champs prennent toute la largeur */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center; /* Centrage du bouton */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
 }

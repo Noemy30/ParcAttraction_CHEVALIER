@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .stars {
@@ -12,8 +13,13 @@
 mat-icon {
   cursor: pointer;
   font-size: 24px;
+  color: #ccc;
 }
 
 mat-icon.selected {
   color: gold;
+}
+
+.full-width {
+  width: 100%;
 }

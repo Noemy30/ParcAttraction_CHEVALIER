@@ -1,13 +1,14 @@
-<mat-card>
-  <mat-card-content>
-    <div class="attractions-container">
-      <ng-container *ngFor="let attraction of attractions | async;">
-        <div *ngIf="attraction.visible" class="attraction">
-          <span>{{ attraction.nom }}</span>
-          <span>{{ attraction.description }}</span>
-          <span>Difficulté : {{ attraction.difficulte }} / 5</span>
-        </div>
-      </ng-container>
+<div class="attractions-container">
+  <ng-container *ngFor="let attraction of attractions | async">
+    <div *ngIf="attraction.visible" class="attraction">
+      <div class="attraction-title">{{ attraction.nom }}</div>
+      <div class="attraction-content">
+        <span>{{ attraction.description }}</span>
+        <span class="difficulty">Difficulté : {{ attraction.difficulte }} / 5</span>
+      </div>
+      <mat-card-actions>
+        <button class="modal" mat-raised-button color="primary" (click)="openModal(attraction.nom)">Ajouter un avis</button>
+      </mat-card-actions>
     </div>
-  </mat-card-content>
-</mat-card>
+  </ng-container>
+</div>

@@ -1,18 +1,23 @@
-<mat-card>
+<mat-card class="login-card">
   <mat-card-header>
-    <mat-card-title>Connexion à la page administrateur</mat-card-title>
+    <mat-card-title>
+      <mat-icon>lock</mat-icon>
+      Connexion à la page administrateur
+    </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="login()" class="formulaire">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Nom</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" autocomplete="username">
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Mot de passe</mat-label>
-        <input matInput formControlName="password">
+        <input matInput type="password" formControlName="password" autocomplete="current-password">
       </mat-form-field>
-      <button mat-stroked-button type="submit">Connexion</button>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Connexion</button>
+      </mat-card-actions>
     </form>
   </mat-card-content>
 </mat-card>
