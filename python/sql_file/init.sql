@@ -18,7 +18,7 @@ CREATE TABLE users (
     password varchar(255) not null
 );
 
-
+DROP TABLE IF EXISTS avis;
 CREATE TABLE avis (
     id INT AUTO_INCREMENT PRIMARY KEY,
     attraction_id INT NOT NULL,
