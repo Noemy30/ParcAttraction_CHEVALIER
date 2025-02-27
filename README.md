@@ -38,6 +38,12 @@ L'application de parc d'attraction permet aux visiteurs de voir en temps réel l
   ```bash
   cd python
   ```
+
+- Exécuter la commande
+  ```bash
+  docker compose exec api sh
+  ```
+
 - Exécuter la commande pour initialiser la base de données :  
   ```bash
   python3 init.py
