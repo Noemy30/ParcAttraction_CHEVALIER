@@ -1,35 +1,61 @@
-Projet maintenance applicative
+# README - Documentation de l'Application
 
-Vous avez un projet de parc d'attraction, pour l'instant, on peut uniquement ajouter des attractions (connexion administrateur) et les visualiser (visiteur).
-Il vous faut reprendre le projet et le continuer.
-Certains éléments du projet sont à reprendre, mais ne sont pas explicites dans le cahier des charges, c'est à vous d'identifier les problèmes et de les corriger.
+## 📌 Présentation
+L'application de parc d'attraction permet aux visiteurs de voir en temps réel les manèges ouverts ou fermés.
 
-Si vous avez des questions n'hésitez pas
+## 🎯 Objectifs
+- Permettre aux visiteurs de savoir quelles attractions sont disponibles.
+- Offrir aux administrateurs la possibilité de gérer la visibilité des attractions.
+- Permettre aux visiteurs de laisser des avis et des notes sous forme d'étoiles sur les attractions.
 
-Notation :
-- Mise en place des fonctionnalités décrites dans le cahier des charges
-- Respect des consignes
-- Qualité de code
-- Commit réguliers et clairs
+## 🚀 Fonctionnalités
 
-Quelques pistes sur quoi commencer :
-- Faire le bilan de l'existant
-- Explorer le projet
-- Établir un début de schéma BDD
+### 🌟 Fonctionnalités Principales
+- **Connexion** : Seuls les administrateurs peuvent se connecter et modifier la visibilité des attractions.
+- **Gestion des attractions** : Les administrateurs peuvent ajouter de nouvelles attractions.
+- **Consultation des attractions** : Les visiteurs peuvent voir les attractions disponibles.
+- **Avis et notes** : Les visiteurs peuvent ajouter des avis et attribuer des notes aux attractions.
 
-Si vous avez des soucis lors de l'installation du projet, vous m'appelez
-Mise en place du projet :
-- Faite un clone du projet
-- Faite un nouveau repository et me l'envoyer à l'adresse faivrem22@gmail.com avec <NOM> et <PRENOM>
-Lancement du projet :
-- Build le docker compose (dans le dossier du projet dans un terminal : docker compose build)
-- Lancer le docker compose (dans le dossier du projet dans un terminal : docker compose up)
-Une fois que tout est fini :
-- Aller dans le container python (en console : docker compose exec api sh)
-  - Lancer le script python : init.py (python3 init.py)
-- Le projet est lancé
-Pour tester : 
-Adresse angular :
-http://localhost:4200/accueil
-Adresse api :
-http://127.0.0.1:5000/
+## 🏗️ Architecture Technique
+
+### 🔧 Technologies Utilisées
+- **Frontend** : Angular
+  - HTML, CSS, TypeScript
+- **Backend** : Python
+- **Base de Données** : MariaDB
+- **API** : Python 
+
+## 🚀 Déploiement
+- Cloner le projet depuis GitHub :  
+  ```bash
+  git clone https://github.com/Noemy30/ParcAttraction_CHEVALIER.git
+  ```
+- Lancer la stack Docker avec la commande suivante et laisser le programme se charger :  
+  ```bash
+  docker-compose up --build
+  ```
+- Ouvrir un terminal et se déplacer dans le répertoire Python :  
+  ```bash
+  cd python
+  ```
+- Exécuter la commande pour initialiser la base de données :  
+  ```bash
+  python3 init.py
+  ```
+
+## 🗂️ Schéma de la base de données
+
+![image_base_de_données](https://github.com/user-attachments/assets/00d96f0e-684c-4b18-b00d-2557a45cad71)
+
+
+
+## 💡 Améliorations possibles
+
+- Intégration d'une carte interactive affichant l'emplacement des attractions dans le parc.
+- Mise en place d'un système de vente de billets pour l'accès au parc.
+- Possibilité pour les utilisateurs de créer un compte afin d'acheter des billets en ligne.
+- Ajout d'images illustrant chaque attraction pour une meilleure visualisation.
+- Affichage des restrictions d'âge et des exigences de taille minimale et maximale pour chaque attraction.
+- Indication des horaires d'ouverture et de fermeture du parc.
+
+
