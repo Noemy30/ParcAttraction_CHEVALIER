@@ -51,11 +51,12 @@ L'application de parc d'attraction permet aux visiteurs de voir en temps réel l
 
 ## 💡 Améliorations possibles
 
-- Intégration d'une carte interactive affichant l'emplacement des attractions dans le parc.
-- Mise en place d'un système de vente de billets pour l'accès au parc.
-- Possibilité pour les utilisateurs de créer un compte afin d'acheter des billets en ligne.
-- Ajout d'images illustrant chaque attraction pour une meilleure visualisation.
-- Affichage des restrictions d'âge et des exigences de taille minimale et maximale pour chaque attraction.
-- Indication des horaires d'ouverture et de fermeture du parc.
+- Intégration d'une carte interactive affichant l'emplacement des attractions dans le parc. (5 jours)
+- Mise en place d'un système de vente de billets pour l'accès au parc. (4 jours)
+- Possibilité pour les utilisateurs de créer un compte afin d'acheter des billets en ligne. (3 jours)
+- Ajout d'images illustrant chaque attraction pour une meilleure visualisation. (1 jour)
+- Affichage des restrictions d'âge et des exigences de taille minimale et maximale pour chaque attraction. (1 jour)
+- Indication des horaires d'ouverture et de fermeture du parc. (1 jour)
+
 
 
